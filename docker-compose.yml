@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  bolt:
+    build: .
+    ports:
+      - 8000:80
+    volumes:
+      - ./bolt/config:/var/www/html/app/config
+      - ./bolt/database:/var/www/html/app/database
+      - ./bolt/theme:/var/www/html/public/theme
