@@ -18,5 +18,4 @@ RUN curl -s -O https://bolt.cm/distribution/bolt-latest.tar.gz \
     && tar -xzf bolt-latest.tar.gz --strip-components=1 \
     && php app/nut init
 
-RUN chmod -R 777 app/cache/ extensions/ \
-    && chmod -R 777 public/thumbs/ public/files/
+RUN chmod -R 777 app/cache/ extensions/ public/thumbs/ public/files/
