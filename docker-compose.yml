@@ -9,4 +9,5 @@ services:
     volumes:
       - ./bolt/config:/var/www/html/app/config
       - ./bolt/database:/var/www/html/app/database
+      - ./bolt/files:/var/www/html/public/files
       - ./bolt/theme:/var/www/html/public/theme
