@@ -1,5 +1,0 @@
-config/*_local.yml
-database/*.db
-files/*
-!files/.htaccess
-!files/index.html
