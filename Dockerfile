@@ -1,12 +1,20 @@
 FROM php:7.2-apache
 
-RUN apt-get update \
-    && apt-get install -y git libicu-dev
+RUN apt-get update && apt-get install -y \
+    git \
+    libicu-dev \
+    libfreetype6-dev \
+    libjpeg-dev \
+    libpng-dev
 
-COPY config/php.ini /usr/local/etc/php
-RUN docker-php-ext-install intl opcache
+RUN docker-php-ext-install intl opcache exif
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd
 
 COPY config/bolt.conf /etc/apache2/sites-available
+COPY config/php.ini /usr/local/etc/php
+
 RUN a2dissite 000-default \
     && a2ensite bolt \
     && a2enmod rewrite \
